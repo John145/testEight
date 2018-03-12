@@ -1,1 +1,12 @@
-yang
+yang 
+
+
+/** 
+     * 功能描述：拷贝一个目录或者文件到指定路径下，即把源文件拷贝到目标文件路径下 
+     *  
+     * @param source 
+     *            源文件 
+     * @param target 
+     *            目标文件路径 
+     * @return void 
+     */  
