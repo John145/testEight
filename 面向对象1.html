@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象</title>
+</head>
+<body>
+	<div id="wrap"></div>
+</body>
+</html>
+<script>
+	var obj = new Object();
+	// var obj = {};
+	obj.a = 10;
+	obj.name = "财大";
+	obj.sayhello = function(a){
+		if(a){
+			alert(a);
+		}
+	};
+	console.log(obj);
+	obj.sayhello("hello");
+	// var mycars=new Array("Saab","Volvo","BMW")
+	var mycars = [1,2,3];
+	console.log(mycars[0]);
+</script>

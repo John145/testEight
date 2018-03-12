@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function People(name){
+		this.name = name;
+	}
+	People.prototype = {
+		age: 19
+	};
+	var p1 = new People("张三");
+	console.log(p1);
+	console.log(p1.age);
+</script>

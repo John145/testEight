@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打飞机游戏</title>
+	<style>
+		#wrap{
+			width: 500px;
+			height: 500px;
+			border: 1px solid red;
+			position: relative;
+		}
+		#target{
+			position: absolute;
+			left: 200px;
+			width: 100px;
+			height: 50px;
+			background: green;
+		}
+		.bullet{
+			width: 30px;
+			height: 30px;
+			background: black;
+			position: absolute;
+			bottom: 0;
+			left: 235px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="target"></div>
+	</div>
+</body>
+</html>
+<script>
+	var wrap = document.getElementById('wrap');
+	var target = document.getElementById('target');
+	target.blood = 100;
+	target.isdie = false;
+	//通过构造函数创建子弹
+	function Bullet(father){
+		this.tag = document.createElement('div');
+		this.tag.className = "bullet";
+		this.move = function(){
+			var bullet = this.tag;
+			var timer = setInterval(function(){
+				//获取当前子弹的Y坐标
+				var currentTop = bullet.offsetTop;
+				currentTop -= 10;
+				bullet.style.top = currentTop + 'px';
+				if(currentTop <= target.offsetTop + target.offsetHeight){
+					father.removeChild(bullet);
+					clearInterval(timer);
+					//给目标减血
+					target.blood -= 10;
+					console.log(target.blood);
+					if(target.blood <= 0 && target.isdie == false){
+						target.remove();
+						target.isdie == true;
+					}
+				}
+			},30);
+		};
+		father.appendChild(this.tag);
+	}
+	//传统创建子弹
+	// function createBullet(father){
+	// 	var bullet = document.createElement('div');
+	// 	bullet.className = "bullet";
+	// 	bullet.move = setInterval(function(){
+	// 		//获取当前子弹的Y坐标
+	// 		var currentTop = bullet.offsetTop;
+	// 		currentTop -= 10;
+	// 		bullet.style.top = currentTop + 'px';
+	// 		if(currentTop <= -bullet.offsetHeight){
+	// 			father.removeChild(bullet);
+	// 			clearInterval(bullet.move);
+	// 		}
+	// 	},30);
+	// 	father.appendChild(bullet);
+	// }
+	wrap.onclick = function(){
+		// createBullet(wrap);
+		var a = new Bullet(this);
+		a.move();
+		// console.log(a);
+	};
+</script>
